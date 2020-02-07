@@ -216,6 +216,7 @@ static void usage(const char *program)
 
 int main(int argc, char *argv[])
 {
+	//fprintf(stderr, "BUILD: %s %s", __DATE__, __TIME__);
     /*
     configuration options
     */
@@ -472,7 +473,7 @@ int main(int argc, char *argv[])
     eeprom_set_value(ftdi, USB_VERSION, cfg_getint(cfg, "usb_version"));
     eeprom_set_value(ftdi, CHIP_TYPE, cfg_getint(cfg, "eeprom_type"));
 
-    eeprom_set_value(ftdi, HIGH_CURRENT, cfg_getbool(cfg, "high_current"));
+    eeprom_set_value(ftdi, HIGH_CURRENT, cfg_getbool(cfg, "high_current") ? HIGH_CURRENT_DRIVE : 0 );
 
     if (ftdi->type == TYPE_R)
     {
